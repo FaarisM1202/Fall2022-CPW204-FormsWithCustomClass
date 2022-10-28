@@ -31,6 +31,11 @@ function $(id:string) {
     return document.getElementById(id);
 }
 
+/**
+ * Gets all the data from the game and
+ * @returns it in the object.
+ */
+
 function getVideoGame():VideoGame {
     // Create game
     let game = new VideoGame();
@@ -54,12 +59,35 @@ function getVideoGame():VideoGame {
         game.isDigitalOnly = false;
     }
     // Return game
-
+    return game;
 }
 
 function displayGame(myGame:VideoGame):void {
     // Display video game below the form
+    let displayDiv = $("display");
 
+    // creates the <h2> element in memory
+    let gameHeading = document.createElement("h2");
+    // this then attaches the games header into the actual document title
+    gameHeading.innerHTML = myGame.title;
+
+    // creates a paragraph that includes the whole details about the game
+    let gameInfo = document.createElement("p");
+    let notDigitalDisplay = "";
+    if(myGame.isDigitalOnly) {
+        notDigitalDisplay = "not";
+    }
+    
+    gameInfo.innerText = myGame.title + " has a rating of " +
+                                    myGame.rating + ". It costs " +
+                                    myGame.price + ". It is " + notDigitalDisplay +
+                                     " digital only.";
+
+    // adds the h2 into the <div> display
+    displayDiv.appendChild(gameHeading);
+
+    // add <p> game info
+    displayDiv.appendChild(gameInfo);
 }
 
 // Add validation code!

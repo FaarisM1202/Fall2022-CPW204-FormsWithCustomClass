@@ -32,8 +32,23 @@ function getVideoGame() {
     else {
         game.isDigitalOnly = false;
     }
+    return game;
 }
 function displayGame(myGame) {
+    var displayDiv = $("display");
+    var gameHeading = document.createElement("h2");
+    gameHeading.innerHTML = myGame.title;
+    var gameInfo = document.createElement("p");
+    var notDigitalDisplay = "";
+    if (myGame.isDigitalOnly) {
+        notDigitalDisplay = "not";
+    }
+    gameInfo.innerText = myGame.title + " has a rating of " +
+        myGame.rating + ". It costs " +
+        myGame.price + ". It is " + notDigitalDisplay +
+        " digital only.";
+    displayDiv.appendChild(gameHeading);
+    displayDiv.appendChild(gameInfo);
 }
 function isAllDataValid() {
     return true;
