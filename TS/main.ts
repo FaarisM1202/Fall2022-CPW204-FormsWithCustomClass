@@ -73,15 +73,22 @@ function displayGame(myGame:VideoGame):void {
 
     // creates a paragraph that includes the whole details about the game
     let gameInfo = document.createElement("p");
-    let notDigitalDisplay = "";
+    let gameMediumDisplay = "";
     if(myGame.isDigitalOnly) {
-        notDigitalDisplay = "not";
+        gameMediumDisplay = "This is a digital only game.";
+    }
+    else {
+        gameMediumDisplay = "You can come to the store and get a copy.";
     }
     
-    gameInfo.innerText = myGame.title + " has a rating of " +
-                                    myGame.rating + ". It costs " +
-                                    myGame.price + ". It is " + notDigitalDisplay +
-                                     " digital only.";
+    // This is the longer version than the one at the bottom
+    // gameInfo.innerText = myGame.title + " has a rating of " +
+    //                                 myGame.rating + ". It costs " +
+    //                                 myGame.price + ". It is " + notDigitalDisplay +
+    //                                  " digital only.";
+    // this is a better version
+    gameInfo.innerText = `${myGame.title} has a rating of ${myGame.rating}.` +
+        `It costs $${myGame.price.toFixed(2)}. ${gameMediumDisplay}`;
 
     // adds the h2 into the <div> display
     displayDiv.appendChild(gameHeading);

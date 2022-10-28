@@ -39,14 +39,15 @@ function displayGame(myGame) {
     var gameHeading = document.createElement("h2");
     gameHeading.innerHTML = myGame.title;
     var gameInfo = document.createElement("p");
-    var notDigitalDisplay = "";
+    var gameMediumDisplay = "";
     if (myGame.isDigitalOnly) {
-        notDigitalDisplay = "not";
+        gameMediumDisplay = "This is a digital only game.";
     }
-    gameInfo.innerText = myGame.title + " has a rating of " +
-        myGame.rating + ". It costs " +
-        myGame.price + ". It is " + notDigitalDisplay +
-        " digital only.";
+    else {
+        gameMediumDisplay = "You can come to the store and get a copy.";
+    }
+    gameInfo.innerText = "".concat(myGame.title, " has a rating of ").concat(myGame.rating, ".") +
+        "It costs $".concat(myGame.price.toFixed(2), ". ").concat(gameMediumDisplay);
     displayDiv.appendChild(gameHeading);
     displayDiv.appendChild(gameInfo);
 }
